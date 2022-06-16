@@ -13,6 +13,10 @@ import { saveAs} from 'file-saver';
 })
 export class GetFileComponent implements OnInit {
   videos?: Video[];
+  SearchName='';
+  more_than='';
+  less_than='';
+
 
   constructor(private FileService: GetFileService) {
   }
@@ -21,6 +25,8 @@ export class GetFileComponent implements OnInit {
     this.getVideos();
 
   }
+
+
   public getVideos():void{
     this.FileService.getVideos().subscribe(
       (response: Video[]) =>{
@@ -31,6 +37,8 @@ export class GetFileComponent implements OnInit {
       }
     );
   }
+
+
   public getVideo(fileId: String):void{
     this.FileService.getVideo(fileId).subscribe(
       (response:any) =>{
@@ -47,5 +55,41 @@ export class GetFileComponent implements OnInit {
       }
     );
   }
+  public getVideoByDuration(more_than: String, less_than:String):void{
+         this.FileService.getVideoByDuration(more_than, less_than).subscribe(
+           (response:Video[]) =>{
+             console.log(response)
+             this.videos=response;
+           },
+           (error: HttpErrorResponse)=>{
+             alert(error.message);
+           }
+         );
+     }
+
+  public getVideoByName(name: String):void{
+           this.FileService.getVideoByName(name).subscribe(
+             (response:Video[]) =>{
+               console.log(response)
+               this.videos=response;
+             },
+             (error: HttpErrorResponse)=>{
+               alert(error.message);
+             }
+           );
+       }
+
+
+  public deleteVideo(fileId: String):void{
+      this.FileService.deleteVideo(fileId).subscribe(
+        (response:any) =>{
+          console.log(response);
+          this.getVideos();
+        },
+        (error: HttpErrorResponse)=>{
+          alert(error.message);
+        }
+      );
+    }
 
 }

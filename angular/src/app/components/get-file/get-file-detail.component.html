@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <title>Files</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Video Application</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" href="uploadfiles">Upload Files</a>
+                    <a class="nav-link" href="files">View All Videos</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+<div class="jumbotron" style="padding-left:5%; padding-right:5%">
+    <h1 class="display-4">Hello, This is your video!</h1>
+    <p class="lead"></p>
+    <hr class="my-4">
+    <p>The details of your asked file are below.</p>
+</div>
+
+<div class="container">
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Property</th>
+            <th scope="col">Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Name</td>
+            <td>{{name}}</td>
+        </tr>
+        <tr>
+            <td>Duration</td>
+            <td>{{duration}}</td>
+        </tr>
+        <tr>
+            <td>Upload Data</td>
+            <td>{{uploadDate}}</td>
+        </tr>
+    </table>
+
+    <hr/>
+
+
+    <a class="btn btn-primary btn-lg" role="button" routerLink="/files-all">See All Files</a>
+
+</div>
+
+
+
+
+</body>
+</html>
