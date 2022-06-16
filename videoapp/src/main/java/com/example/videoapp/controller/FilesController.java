@@ -74,6 +74,17 @@ public class FilesController {
         System.out.println(contentType);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.parseMediaType(contentType)).header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + video.getGivenName() + "\"").header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, HttpHeaders.CONTENT_DISPOSITION).body(new ByteArrayResource(video.getData()));
     }
+    @CrossOrigin
+    @GetMapping("/files/details/{fileid}")
+    public ResponseEntity<Video> getfile(@PathVariable String fileid, HttpServletRequest request) {
+        Video video = null;
+        try {
+            video = uploadService.get(fileid);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(video);
+    }
     @DeleteMapping("/files/{fileid}")
     public ResponseEntity<String> deletefile(@PathVariable String fileid, HttpServletRequest request) {
 
