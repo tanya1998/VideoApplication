@@ -1,4 +1,8 @@
 # VideoApplication
+HOW TO BUILD:-
+`cd VideoApplication
+docker compose up`
+
 Backend APIs (localhost:8081)
   1. UploadFiles - /files [Input {MultiPart File, Double Duration}][Output {OK - File Uploaded}]
   2. GetFiles - /files [Input {None}][Output {List<File>}]
