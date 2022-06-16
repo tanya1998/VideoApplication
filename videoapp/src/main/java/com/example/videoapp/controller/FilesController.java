@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 
@@ -42,7 +47,7 @@ public class FilesController {
         return ResponseEntity.status(HttpStatus.OK).body("File Uploaded");
 
     }
-
+    @CrossOrigin
     @GetMapping("/files")
     public ResponseEntity<List<VideoDTO>> downloadFiles(HttpServletRequest request) {
         List<VideoDTO> allVideos;
@@ -80,5 +85,42 @@ public class FilesController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("File was successfully removed");
     }
 
+    @CrossOrigin
+    @GetMapping("/files/name/{filename}")
+    public ResponseEntity<List<VideoDTO>> downloadFileByName(@PathVariable String filename, HttpServletRequest request) {
+        List<VideoDTO> videos = null;
+        try {
+            videos = uploadService.getAllByName(filename);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(videos);
+    }
+    @CrossOrigin
+    @GetMapping("/files/duration/{more_than}/{less_than}")
+    public ResponseEntity<List<VideoDTO>> downloadFileByDuration(@PathVariable String more_than,@PathVariable String less_than, HttpServletRequest request) {
+        List<VideoDTO> videos = null;
+        try {
+            videos = uploadService.getAllByDuration(Double.parseDouble(more_than.trim()),Double.parseDouble(less_than.trim()));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(videos);
+    }
+    @CrossOrigin
+    @GetMapping("/files/date/{date}")
+    public ResponseEntity<List<VideoDTO>> downloadFileByDate(@PathVariable String date, HttpServletRequest request) {
+        List<VideoDTO> videos = null;
+        try {
+           // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-YYYY");
+            LocalDate localDate = LocalDate.parse(date);
+            //Date date_ = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            videos = uploadService.getAllByDate(localDate);
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new RuntimeException(e);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(videos);
+    }
 
 }

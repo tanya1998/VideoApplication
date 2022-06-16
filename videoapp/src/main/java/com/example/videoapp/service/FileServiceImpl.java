@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -59,7 +61,7 @@ public class FileServiceImpl implements FileService {
     public Video get(String fileId) {
         Video file = null;
         try{
-        file = videoRepository.findById(Integer.parseInt(fileId));
+        file = videoRepository.findById(Integer.parseInt(fileId)).orElse(null);
         if(file==null)
             throw new Exception("File Not Found");
         }
@@ -78,12 +80,12 @@ public class FileServiceImpl implements FileService {
     public void delete(String id) {
         Video file = null;
         try{
-            file = videoRepository.findById(id).orElse(null);
+            file = videoRepository.findById(Integer.parseInt(id)).orElse(null);
             if(file==null)
                 throw new Exception("File Not Found");
             else
             {
-                videoRepository.delete(file);
+                videoRepository.deleteById(Integer.parseInt(id));
             }
 
         }
@@ -92,9 +94,28 @@ public class FileServiceImpl implements FileService {
             if(e.getMessage().equals("File Not Found"))
                 throw new FileNotException("File Not Found");
             else
+            {
+                System.out.println(e);
                 throw new BadRequestException("Bad Request");
+            }
+
         }
 
+    }
+
+    @Override
+    public List<VideoDTO> getAllByName(String name) {
+        return videoRepository.findAllByGivenNameContainsIgnoreCase(name);
+    }
+
+    @Override
+    public List<VideoDTO> getAllByDuration(Double duration1, Double duration2) {
+        return videoRepository.findAllByDurationBetweenOrderByDuration(duration1, duration2);
+    }
+
+    @Override
+    public List<VideoDTO> getAllByDate(LocalDate date) {
+        return videoRepository.findAllByUploadDateOrderByUploadDate(date);
     }
 
     @Override
