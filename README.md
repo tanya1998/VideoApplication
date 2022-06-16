@@ -3,6 +3,11 @@ HOW TO BUILD:-
 `cd VideoApplication`
 `docker compose up`
 
+ERROR WHILE BUILDING:-
+In case of error with Java Spring Boot dockerize, Please follow below:-
+1. Change pom.xml to java version in your local system.
+2.` mvn clean package`
+3. re-run the `docker compose up`
 Backend APIs (localhost:8081)
   1. UploadFiles - /files [Input {MultiPart File, Double Duration}][Output {OK - File Uploaded}]
   2. GetFiles - /files [Input {None}][Output {List<File>}]
