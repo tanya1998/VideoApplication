@@ -46,10 +46,12 @@
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" style="padding-bottom:2%;">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../../../assets/images/clay-banks-hwLAI5lRhdM-unsplash.jpg" class="d-block w-100" alt="...">
+        <img src="../../../assets/images/ashwini-chaudhary-monty-r91d3CuE3Ns-unsplash.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
+          <h5>MyCityOS Assignment: Video Storage and Retrieval Service</h5>
+          <p>This application can store .mp4 and .mmpeg format videos. The tech stack used is Angular Frontend +
+          SpringBoot Backend + Docker for DevOps</p>
+          <a href = "uploadfiles"><button class="btn btn-success" type="button">Upload Video</button></a>
         </div>
       </div>
     </div>
@@ -58,6 +60,11 @@
 
   <div class="container">
     <div class="row" style="padding:1%;">
+
+      <div class="col-lg-3">
+        <a href = "files"><button class="btn btn-primary" type="button">See all videos</button></a>
+      </div>
+
     <div class="col-lg-4">
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search by video name" aria-label="Video name" aria-describedby="basic-addon2" [(ngModel)]="SearchName">
@@ -66,7 +73,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-5">
       <div class="input-group">
         <input type="number" class="form-control" placeholder="Minimum duration of video" [(ngModel)]="more_than" >
         <input type="number" class="form-control" placeholder="Maximum duration of video" [(ngModel)]="less_than">
@@ -77,6 +84,7 @@
     </div>
     </div>
   </div>
+
 
   <div class="row" style="padding:5%;">
 
@@ -89,17 +97,22 @@
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
             <ul class="list-group list-group-flush">
-                <a href=""></a><li class="list-group-item"><button style = "width:100%;" class="btn btn-primary" (click)=getVideo(video.fileId)>Get Details and preview</button></li>
+                <li class="list-group-item"><a href="fileDetails/{{video.fileId}}"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></a></li>
                 <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary" (click)=getVideo(video.fileId)>Download</button></li>
-                <li class="list-group-item"><button style = "width:100%;" class="btn btn-success" (click)=getVideo(video.fileId)>Convert from .mp4 to .webm and download</button></li>
                 <li class="list-group-item"><button style = "width:100%;" class="btn btn-danger" (click)=deleteVideo(video.fileId)>Delete</button></li>
             </ul>
         </div>
       </div>
     </div>
 
+  <div class="row" style="padding-left:2%;">
+    <hr>
+    <hr>
+    <p>This below section is just for illustration purposes. This is how your uploaded videos will stack as cards above this
+    section. Click on Upload Video in the Navbar to see changes and your videos above this section</p>
+  </div>
 
-  <div class="row" style="padding:5%;">
+  <div class="row" style="padding:5%; padding-top:0%">
 
     <div class="col-lg-3">
       <div class="card mt-4" style="width: 18rem;">
@@ -111,7 +124,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></li>
           <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary">Download</button></li>
-          <li class="list-group-item"><button style = "width:100%;" class="btn btn-success">Convert from .mp4 to .webm and download</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-danger">Delete</button></li>
         </ul>
       </div>
     </div>
@@ -127,7 +140,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></li>
           <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary">Download</button></li>
-          <li class="list-group-item"><button style = "width:100%;" class="btn btn-success">Convert from .mp4 to .webm and download</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-danger">Delete</button></li>
         </ul>
       </div>
     </div>
@@ -143,7 +156,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></li>
           <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary">Download</button></li>
-          <li class="list-group-item"><button style = "width:100%;" class="btn btn-success">Convert from .mp4 to .webm and download</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-danger">Delete</button></li>
         </ul>
       </div>
     </div>
@@ -158,7 +171,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></li>
           <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary">Download</button></li>
-          <li class="list-group-item"><button style = "width:100%;" class="btn btn-success">Convert from .mp4 to .webm and download</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-danger">Delete</button></li>
         </ul>
       </div>
     </div>

@@ -84,12 +84,12 @@ export class GetFileComponent implements OnInit {
       this.FileService.deleteVideo(fileId).subscribe(
         (response:any) =>{
           console.log(response);
+          this.getVideos();
         },
         (error: HttpErrorResponse)=>{
           alert(error.message);
         }
       );
-      this.getVideos();
     }
 
 }
