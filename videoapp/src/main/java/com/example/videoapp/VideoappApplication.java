@@ -29,7 +29,7 @@ public class VideoappApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/files*")
-                        .allowedOrigins("*").allowedMethods("GET", "POST", "OPTIONS", "PUT")
+                        .allowedOrigins("*").allowedMethods("GET", "POST", "OPTIONS", "PUT", "DELETE")
                         .allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin", "Access-Control-Request-Method",
                                 "Access-Control-Request-Headers")
                         .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials");
