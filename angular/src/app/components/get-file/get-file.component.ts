@@ -13,6 +13,10 @@ import { saveAs} from 'file-saver';
 })
 export class GetFileComponent implements OnInit {
   videos?: Video[];
+  SearchName='';
+  more_than='';
+  less_than='';
+
 
   constructor(private FileService: GetFileService) {
   }
@@ -51,6 +55,29 @@ export class GetFileComponent implements OnInit {
       }
     );
   }
+  public getVideoByDuration(more_than: String, less_than:String):void{
+         this.FileService.getVideoByDuration(more_than, less_than).subscribe(
+           (response:Video[]) =>{
+             console.log(response)
+             this.videos=response;
+           },
+           (error: HttpErrorResponse)=>{
+             alert(error.message);
+           }
+         );
+     }
+
+  public getVideoByName(name: String):void{
+           this.FileService.getVideoByName(name).subscribe(
+             (response:Video[]) =>{
+               console.log(response)
+               this.videos=response;
+             },
+             (error: HttpErrorResponse)=>{
+               alert(error.message);
+             }
+           );
+       }
 
 
   public deleteVideo(fileId: String):void{
@@ -62,6 +89,7 @@ export class GetFileComponent implements OnInit {
           alert(error.message);
         }
       );
+      this.getVideos();
     }
 
 }

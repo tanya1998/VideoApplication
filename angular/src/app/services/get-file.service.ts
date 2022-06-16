@@ -31,6 +31,18 @@ export class GetFileService {
       return this.http.get(`${this.apiServerUrl}/files/details/${fileId}`,{headers:header});
    }
 
+   public getVideoByDuration(more_than: String, less_than: String): Observable<Video[]>{
+         const header = new HttpHeaders();
+         header.append("Access-Control-Allow-Origin","*");
+         return this.http.get<Video[]>(`${this.apiServerUrl}/files/duration/${more_than}/${less_than}`,{headers:header});
+      }
+
+   public getVideoByName(name: String): Observable<Video[]>{
+         const header = new HttpHeaders();
+         header.append("Access-Control-Allow-Origin","*");
+         return this.http.get<Video[]>(`${this.apiServerUrl}/files/name/${name}`,{headers:header});
+   }
+
   public deleteVideo(fileId: String): Observable<void>{
     const header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin","*");

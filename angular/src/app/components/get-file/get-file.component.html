@@ -43,7 +43,7 @@
   </nav>
 
 
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" style="padding-bottom:2%;">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="../../../assets/images/clay-banks-hwLAI5lRhdM-unsplash.jpg" class="d-block w-100" alt="...">
@@ -52,6 +52,29 @@
           <p>Some representative placeholder content for the first slide.</p>
         </div>
       </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row" style="padding:1%;">
+    <div class="col-lg-4">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search by video name" aria-label="Video name" aria-describedby="basic-addon2" [(ngModel)]="SearchName">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="getVideoByName(SearchName)">Search by Name</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="input-group">
+        <input type="number" class="form-control" placeholder="Minimum duration of video" [(ngModel)]="more_than" >
+        <input type="number" class="form-control" placeholder="Maximum duration of video" [(ngModel)]="less_than">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="getVideoByDuration(more_than,less_than)">Search by Duration</button>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 

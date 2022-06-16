@@ -8,6 +8,7 @@ import {UploadFileService} from "./services/upload-file.service";
 import {GetFileComponent} from "./components/get-file/get-file.component";
 import {GetFileDetailComponent} from "./components/get-file/get-file-detail.component";
 import {RouterModule} from "@angular/router";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {RouterModule} from "@angular/router";
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: 'files' },
       { path: 'uploadfiles', component: UploadFileComponent },
