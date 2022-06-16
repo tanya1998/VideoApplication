@@ -85,6 +85,7 @@ public class FilesController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(video);
     }
+    @CrossOrigin
     @DeleteMapping("/files/{fileid}")
     public ResponseEntity<String> deletefile(@PathVariable String fileid, HttpServletRequest request) {
 
