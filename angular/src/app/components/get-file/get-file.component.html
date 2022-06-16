@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>newww</title>
+</head>
+<body>
+<router-outlet></router-outlet>
+<div *ngFor='let video of videos; index as i'>
+  <div>{{video.givenName}}</div>
+    <button (click)=getVideo(video.fileId)>{{video.fileId}}</button><button (click)=getVideo(video.fileId)>{{video.fileId}}</button>
+</div>
+</body>
+</html>
