@@ -1,14 +1,148 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>newww</title>
+  <title>Files</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<router-outlet></router-outlet>
-<div *ngFor='let video of videos; index as i'>
-  <div>{{video.givenName}}</div>
-    <button (click)=getVideo(video.fileId)>{{video.fileId}}</button><button (click)=getVideo(video.fileId)>{{video.fileId}}</button>
-</div>
+
+  <style>
+
+        .carousel .carousel-item {
+            height: 400px;
+        }
+
+        .carousel-item img {
+            position: absolute;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            min-height: 400px;
+        }
+    </style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Video Application</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link" href="uploadfiles">Upload Files</a>
+          <a class="nav-link" href="files">View All Videos</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../../assets/images/clay-banks-hwLAI5lRhdM-unsplash.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding:5%;">
+
+    <div *ngFor='let video of videos; index as i' class="col-lg-3">
+
+        <div class="card mt-4" style="width: 18rem;">
+          <img src="../../../assets/images/anastase-maragos-rtsvifRfBJk-unsplash.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{video.givenName}}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <a href=""></a><li class="list-group-item"><button style = "width:100%;" class="btn btn-primary" (click)=getVideo(video.fileId)>Get Details and preview</button></li>
+                <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary" (click)=getVideo(video.fileId)>Download</button></li>
+                <li class="list-group-item"><button style = "width:100%;" class="btn btn-success" (click)=getVideo(video.fileId)>Convert from .mp4 to .webm and download</button></li>
+                <li class="list-group-item"><button style = "width:100%;" class="btn btn-danger" (click)=deleteVideo(video.fileId)>Delete</button></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="row" style="padding:5%;">
+
+    <div class="col-lg-3">
+      <div class="card mt-4" style="width: 18rem;">
+        <img src="../../../assets/images/anastase-maragos-rtsvifRfBJk-unsplash.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Sample-Video.mp4</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary">Download</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-success">Convert from .mp4 to .webm and download</button></li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="col-lg-3">
+      <div class="card mt-4" style="width: 18rem;">
+        <img src="../../../assets/images/anastase-maragos-rtsvifRfBJk-unsplash.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Sample-Video.mp4</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary">Download</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-success">Convert from .mp4 to .webm and download</button></li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="col-lg-3">
+      <div class="card mt-4" style="width: 18rem;">
+        <img src="../../../assets/images/anastase-maragos-rtsvifRfBJk-unsplash.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Sample-Video.mp4</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary">Download</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-success">Convert from .mp4 to .webm and download</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card mt-4" style="width: 18rem;">
+        <img src="../../../assets/images/anastase-maragos-rtsvifRfBJk-unsplash.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Sample-Video.mp4</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-primary">Get Details and preview</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-secondary">Download</button></li>
+          <li class="list-group-item"><button style = "width:100%;" class="btn btn-success">Convert from .mp4 to .webm and download</button></li>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+
 </body>
 </html>
+

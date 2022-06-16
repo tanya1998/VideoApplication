@@ -21,6 +21,8 @@ export class GetFileComponent implements OnInit {
     this.getVideos();
 
   }
+
+
   public getVideos():void{
     this.FileService.getVideos().subscribe(
       (response: Video[]) =>{
@@ -31,6 +33,8 @@ export class GetFileComponent implements OnInit {
       }
     );
   }
+
+
   public getVideo(fileId: String):void{
     this.FileService.getVideo(fileId).subscribe(
       (response:any) =>{
@@ -47,5 +51,17 @@ export class GetFileComponent implements OnInit {
       }
     );
   }
+
+
+  public deleteVideo(fileId: String):void{
+      this.FileService.deleteVideo(fileId).subscribe(
+        (response:any) =>{
+          console.log(response);
+        },
+        (error: HttpErrorResponse)=>{
+          alert(error.message);
+        }
+      );
+    }
 
 }

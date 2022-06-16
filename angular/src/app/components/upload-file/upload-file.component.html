@@ -1,60 +1,81 @@
-<html>
+<html lang="en">
 <head>
-  <title>Javacodepoint</title>
-  <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <style>
-    .action-icon{padding:5px;cursor:pointer;color:#fff}
-    .table{font-size:11px;}
-    .table>tbody>tr>td{padding: 2px 6px;vertical-align: middle;border:none;}
-    #main-container{padding: 0px 20px 40px; width: 52%;}
-    #upload-status-container{display:none;}
-    #upload-header{height:35px;width:100%;background-color: #323254;color: #fff;padding: 8px;border-top-left-radius: 10px;border-top-right-radius: 10px;}
-    #progress-bar-container{padding:20px;max-height:260px;overflow-y:auto;border:1px solid #323254;}
-    ::-webkit-scrollbar {background-color: #fff; width: 8px; height: 8px;}
-    ::-webkit-scrollbar-thumb {background-color: #C0C0C0; border-radius: 10px;}
-  </style>
+  <title>Upload File</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<div class="row">
-  <div class="col-8">
-    <label class="btn btn-default p-0">
-      <input type="file" (change)="selectFile($event)"/>
-    </label>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Video Application</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <a class="nav-link" href="uploadfiles">Upload Files</a>
+        <a class="nav-link" href="files">View All Videos</a>
+      </div>
+    </div>
   </div>
-  <div>
-    <video width="400" height="200" [src]="url" controls #video (loadedmetadata)="onMetadata($event,video)" ></video>
+</nav>
+
+<div class="jumbotron" style="padding-left:5%; padding-right:5%">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" role="button" routerLink="/files-all">See All Files</a>
+  </p>
+</div>
+
+<div class="container" id="div">
+
+  <div class="row">
+    <div>
+      <label for="formFileLg" class="form-label">Select you video file to upload</label>
+      <input class="form-control form-control-lg" id="formFileLg" type="file" (change)="selectFile($event)"/>
+    </div>
   </div>
-  <div class="col-4 text-right">
+
+
+  <div class="row" style="padding:2%">
+    <video width="20%" height="20%" [src]="url" controls #video (loadedmetadata)="onMetadata($event,video)"></video>
+  </div>
+
+  <div class="row"  style="padding-bottom:2%">
     <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
       Upload file
     </button>
   </div>
-</div>
-<div class="row">
-  <div class="col">
-    <div *ngIf="currentFile" class="progress my-3">
-      <div
-        class="progress-bar progress-bar-info progress-bar-striped"
-        role="progressbar"
-        attr.aria-valuenow="{{ progress }}"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        [ngStyle]="{ width: progress + '%' }">
-        {{ progress }}%
-      </div>
-    </div>
 
-    <div *ngIf="message" class="alert alert-success" role="alert">{{ message }}</div>
-    <div *ngIf="errorMsg" class="alert alert-danger" role="alert">{{ errorMsg }}</div>
+  <div class="row" style="padding-bottom:5%">
+      <div *ngIf="currentFile" class="progress my-3">
+        <div
+                class="progress-bar progress-bar-info progress-bar-striped"
+                role="progressbar"
+                attr.aria-valuenow="{{ progress }}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                [ngStyle]="{ width: progress + '%' }">
+          {{ progress }}%
+        </div>
+      </div>
+
+      <div *ngIf="message" class="alert alert-success" role="alert">{{ message }}</div>
+      <div *ngIf="errorMsg" class="alert alert-danger" role="alert">{{ errorMsg }}</div>
   </div>
+
 </div>
-<nav>
-  <a routerLink="/files-all" routerLinkActive="active" ><button >See All files</button></a>
-</nav>
+
 </body>
 </html>
 

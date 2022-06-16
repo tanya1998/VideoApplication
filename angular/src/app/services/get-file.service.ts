@@ -25,7 +25,13 @@ export class GetFileService {
     return this.http.get<Blob>(`${this.apiServerUrl}/files/${fileId}`,{observe:'response',responseType:'blob' as 'json', headers:header});
   }
 
-  public deleteEmployee(fileId: String): Observable<void>{
+  public getVideoDetail(fileId: String): Observable<any>{
+      const header = new HttpHeaders();
+      header.append("Access-Control-Allow-Origin","*");
+      return this.http.get(`${this.apiServerUrl}/files/details/${fileId}`,{headers:header});
+   }
+
+  public deleteVideo(fileId: String): Observable<void>{
     const header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin","*");
     return this.http.delete<void>(`${this.apiServerUrl}/files/${fileId}`,{headers:header});
